@@ -1,0 +1,166 @@
+{
+  "project_info": {
+    "project_number": "158198741495",
+    "firebase_url": "https://flutter-notifications-c5255.firebaseio.com",
+    "project_id": "flutter-notifications-c5255",
+    "storage_bucket": "flutter-notifications-c5255.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158198741495:android:3ea1979c572de204",
+        "android_client_info": {
+          "package_name": "com.example.firebaseflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158198741495-qu189ng0aqi3ik5g67c6p32o620q4sd7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIIAOQznKBDispbcUkUSr0a461a0jWFDM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158198741495:android:7b2efd0baf6e0037",
+        "android_client_info": {
+          "package_name": "com.example.firebasemessagingflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158198741495-qu189ng0aqi3ik5g67c6p32o620q4sd7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIIAOQznKBDispbcUkUSr0a461a0jWFDM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158198741495:android:0bb8cc13b79e1049",
+        "android_client_info": {
+          "package_name": "com.example.notificationflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158198741495-qu189ng0aqi3ik5g67c6p32o620q4sd7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIIAOQznKBDispbcUkUSr0a461a0jWFDM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158198741495:android:7fad4c7edb597682",
+        "android_client_info": {
+          "package_name": "com.example.pocflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158198741495-qu189ng0aqi3ik5g67c6p32o620q4sd7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIIAOQznKBDispbcUkUSr0a461a0jWFDM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:158198741495:android:620f0e4ca16cbddd",
+        "android_client_info": {
+          "package_name": "io.flutter.plugins.firebasemessagingexample"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "158198741495-qu189ng0aqi3ik5g67c6p32o620q4sd7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAIIAOQznKBDispbcUkUSr0a461a0jWFDM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
