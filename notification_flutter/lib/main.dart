@@ -1,3 +1,4 @@
+import 'package:firebase_messaging_flutter/NotificationDetails.dart';
 import 'package:flutter/material.dart';
 //import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
@@ -24,16 +25,20 @@ class _MyAppState extends State<MyApp> {
     var android = new AndroidInitializationSettings('mipmap/ic_launcher');
     var ios = new IOSInitializationSettings();
     var platform = new InitializationSettings(android, ios);
-    flutterLocalNotificationsPlugin.initialize(platform);
+    flutterLocalNotificationsPlugin.initialize(platform,
+    selectNotification: onSelectNotification);
 
     firebaseMessaging.configure(
       onLaunch: (Map<String, dynamic> msg) {
+        debugPrint("onLaunch");
         print(" onLaunch called ${(msg)}");
       },
       onResume: (Map<String, dynamic> msg) {
+        debugPrint("onResume");
         print(" onResume called ${(msg)}");
       },
       onMessage: (Map<String, dynamic> msg) {
+        debugPrint("onMessage");
         showNotification(msg);
         print(" onMessage called ${(msg)}");
       },
@@ -47,6 +52,21 @@ class _MyAppState extends State<MyApp> {
     firebaseMessaging.getToken().then((token) {
       update(token);
     });
+  }
+
+  Future onSelectNotification(String payload) {
+    debugPrint("payload : $payload");
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => NotificationDetailsScreen(details: "okok")));
+    /*showDialog(
+      context: context,
+      builder: (_) => new AlertDialog(
+        title: new Text('Notification'),
+        content: new Text('$payload'),
+      ),
+    );*/
   }
 
   showNotification(Map<String, dynamic> msg) async {

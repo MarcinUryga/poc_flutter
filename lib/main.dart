@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_messaging_flutter/CustomButton.dart';
 import 'package:firebase_messaging_flutter/FadeApp.dart';
+import 'package:firebase_messaging_flutter/NotificationDetails.dart';
 import 'package:firebase_messaging_flutter/SampleAppPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      title: 'Lime',
+      title: 'PoC Flutter',
       home: new MainPage(),
     );
   }
@@ -29,12 +30,12 @@ class _MainPageState extends State<MainPage> {
   int _page = 0;
 
   FirebaseMessaging firebaseMessaging = new FirebaseMessaging();
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      new FlutterLocalNotificationsPlugin();
+  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = new FlutterLocalNotificationsPlugin();
 
   @override
   void initState() {
     super.initState();
+    debugPrint("initState");
     _pageController = PageController();
 
     var androidInitSettings =
@@ -44,15 +45,18 @@ class _MainPageState extends State<MainPage> {
         new InitializationSettings(androidInitSettings, iosInitSettings);
     flutterLocalNotificationsPlugin.initialize(initSettings,
         selectNotification: onSelectNotification);
-
     firebaseMessaging.configure(
       onLaunch: (Map<String, dynamic> msg) {
-        print(" onLaunch called ${(msg)}");
+        msg.keys.first.replaceFirst("0", "on launch");
+        var _msg = msg;
+        showNotification(_msg);
+        print("onLaunch called ${(msg)}");
       },
       onResume: (Map<String, dynamic> msg) {
-        print(" onResume called ${(msg)}");
+        print("onResume called ${(msg)}");
       },
       onMessage: (Map<String, dynamic> msg) {
+        debugPrint("onMessage");
         showNotification(msg);
         print(" onMessage called ${(msg)}");
       },
@@ -68,23 +72,6 @@ class _MainPageState extends State<MainPage> {
     });
   }
 
-  _showSnackBar(BuildContext context) {
-    final snackBar = SnackBar(content: Text("Chip button clicked"));
-    Scaffold.of(context).showSnackBar(snackBar);
-  }
-
-  Future onSelectNotification(String payload) {
-    debugPrint("payload : $payload");
-//    _showSnackBar(context);
-    showDialog(
-      context: context,
-      builder: (_) => new AlertDialog(
-            title: new Text('Notification'),
-            content: new Text('$payload'),
-          ),
-    );
-  }
-
   showNotification(Map<String, dynamic> msg) async {
     var android = new AndroidNotificationDetails(
       'sdffds dsffds',
@@ -93,7 +80,32 @@ class _MainPageState extends State<MainPage> {
     );
     var iOS = new IOSNotificationDetails();
     await flutterLocalNotificationsPlugin.show(
-        0, "Title", "Body", new NotificationDetails(android, iOS));
+        0, "PoC Flutter", "Body", new NotificationDetails(android, iOS),
+        payload: msg.toString());
+  }
+
+  Future onSelectNotification(String payload) {
+    debugPrint("payload : $payload");
+    debugPrint("onSelectNotification");
+//    _showSnackBar(context);
+    String text = "";
+    if (payload != null) {
+      var details = payload.replaceAll("{", "").replaceAll("}", "").split(",");
+      details.forEach((detail) {
+        text += detail + "\n";
+      });
+    }
+    showDialog(
+      context: context,
+      builder: (_) => new AlertDialog(
+            title: new Text('Notification'),
+            content: new Text(text),
+          ),
+    );
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => NotificationDetailsScreen(details: text)));
   }
 
   update(String token) {
