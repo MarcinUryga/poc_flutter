@@ -48,11 +48,11 @@ class _MainPageState extends State<MainPage> {
     firebaseMessaging.configure(
       onLaunch: (Map<String, dynamic> msg) {
         msg.keys.first.replaceFirst("0", "on launch");
-        var _msg = msg;
-        showNotification(_msg);
+        onSelectNotification(msg.toString());
         print("onLaunch called ${(msg)}");
       },
       onResume: (Map<String, dynamic> msg) {
+        onSelectNotification(msg.toString());
         print("onResume called ${(msg)}");
       },
       onMessage: (Map<String, dynamic> msg) {
